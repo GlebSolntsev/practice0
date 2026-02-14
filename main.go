@@ -33,16 +33,16 @@ func (s SmsNotifier) Send(message string) error {
 	return nil
 }
 
-// User представляет пользователя, который может получать уведомления.
-type User struct {
+// UserGlebSolntsev представляет пользователя, который может получать уведомления.
+type UserGlebSolntsev struct {
 	name     string
 	email    string
 	notifier Notifier // Зависимость от интерфейса (инъекция зависимости)
 }
 
-// NewUser создает нового пользователя с заданным способом уведомления.
-func NewUser(name string, email string, notifier Notifier) *User {
-	return &User{
+// NewUserGlebSolntsevGlebSolntsev создает нового пользователя с заданным способом уведомления.
+func NewUserGlebSolntsev(name string, email string, notifier Notifier) *UserGlebSolntsev {
+	return &UserGlebSolntsev{
 		name:     name,
 		email:    email,
 		notifier: notifier,
@@ -50,8 +50,8 @@ func NewUser(name string, email string, notifier Notifier) *User {
 }
 
 // Notify отправляет пользователю уведомление через его notifier.
-func (u User) Notify(message string) error {
-	fmt.Printf("User %s (%s) received a notification: ", u.name, u.email)
+func (u UserGlebSolntsev) Notify(message string) error {
+	fmt.Printf("UserGlebSolntsev %s (%s) received a notification: ", u.name, u.email)
 	return u.notifier.Send(message)
 }
 
@@ -61,10 +61,10 @@ func main() {
 	smsNoti := SmsNotifier{apiKey: "12345", phoneNumber: "+79991112233"}
 
 	// Создаем пользователей с разными способами уведомления
-	user1 := NewUser("Alice", "alice@example.com", emailNoti)
-	user2 := NewUser("Bob", "bob@example.com", smsNoti)
+	UserGlebSolntsev1 := NewUserGlebSolntsev("Alice", "alice@example.com", emailNoti)
+	UserGlebSolntsev2 := NewUserGlebSolntsev("Bob", "bob@example.com", smsNoti)
 
 	// Отправляем уведомления
-	user1.Notify("Hello, Alice!")
-	user2.Notify("Hello, Bob!")
+	UserGlebSolntsev1.Notify("Hello, Alice!")
+	UserGlebSolntsev2.Notify("Hello, Bob!")
 }
